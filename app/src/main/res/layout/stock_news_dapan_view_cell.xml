@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_marginTop="@dimen/small_line_margin">
+    <TextView
+        android:id="@+id/tv_stock_news_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/inside_layout_margin"
+        android:text="新闻内容"
+        android:textSize="@dimen/content_text_size"/>
+    <TextView
+        android:id="@+id/tv_stock_news_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2015-3-27"
+        android:paddingLeft="@dimen/inside_layout_margin"
+        android:textSize="@dimen/intr_text_small_size"/>
+</LinearLayout>

@@ -1,0 +1,45 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
+         https://developer.android.com/design/patterns/navigation-drawer.html -->
+    <dimen name="navigation_drawer_width">240dp</dimen>
+
+    <!--text size config-->
+    <dimen name="content_text_size">20sp</dimen>
+    <dimen name="intr_text_size">18sp</dimen>
+    <dimen name="button_text_size">22sp</dimen>
+    <dimen name="intr_text_small_size">12sp</dimen>
+
+    <!--margin config-->
+    <dimen name="outside_layout_margin">10dp</dimen>
+    <dimen name="inside_layout_margin">5dp</dimen>
+    <dimen name="money_unit_margin">15dp</dimen>
+
+    <!--home view config-->
+    <dimen name="home_first_square_height">80dp</dimen>
+    <dimen name="small_line_margin">1dp</dimen>
+    <dimen name="home_second_square_height">60dp</dimen>
+    <dimen name="home_third_square_height">60dp</dimen>
+    <dimen name="home_forth_square_height">200dp</dimen>
+
+
+    <!-- dateTitleLayout -->
+    <dimen name="dateTitleTextSize">16sp</dimen>
+    <dimen name="dateTitlePaddingBottom">0dp</dimen>
+    <!-- weekLayout -->
+    <dimen name="weekDaysPaddingBottom">0dp</dimen>
+    <dimen name="dayOfWeekTextSize">14sp</dimen>
+    <!-- weekRowLayout -->
+    <dimen name="weekRowMinHeight">16dp</dimen>
+    <dimen name="dayOfMonthTextSize">14sp</dimen>
+    <dimen name="dayOfMonthMinWidth">50dp</dimen>
+    <dimen name="dayOfMonthMinHeight">0dp</dimen>
+    <dimen name="dayOfMonthPaddingBottom">0dp</dimen>
+    <dimen name="dayOfMonthImageSize">4dp</dimen>
+    <dimen name="dayOfMonthImageMarginTop">32dp</dimen>
+
+
+</resources>

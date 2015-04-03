@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="40dp"
+    android:layout_height="60dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/outcome_type_selector">
+    <ImageView
+        android:id="@+id/iv_img"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@color/white"/>
+    <TextView
+        android:id="@+id/tv_text"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:text="一般"
+        android:gravity="center"/>
+</LinearLayout>

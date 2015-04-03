@@ -1,0 +1,1 @@
+开始使用handler消息机制处理UI，因为asynctask容易把逻辑代码和UI代码混合在一起。
