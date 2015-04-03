@@ -1,0 +1,2 @@
+# moneyassistant
+Manage Moneyassistant project
