@@ -3,10 +3,13 @@ package com.oliver.moneyassistant.db.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.oliver.moneyassistant.logic.http.ImageUtils;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +24,8 @@ public class NewsTitle implements Parcelable {
     private String time;
     private String content;
     private int newsType;
+    private int hot;
+    private String thumbnail;
 
     public int getId() {
         return id;
@@ -70,6 +75,22 @@ public class NewsTitle implements Parcelable {
         this.newsType = newsType;
     }
 
+    public int getHot() {
+        return hot;
+    }
+
+    public void setHot(int hot) {
+        this.hot = hot;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -83,6 +104,7 @@ public class NewsTitle implements Parcelable {
         dest.writeString(this.time);
         dest.writeString(this.content);
         dest.writeInt(this.newsType);
+        dest.writeInt(this.hot);
     }
 
     public NewsTitle(){}
@@ -96,6 +118,7 @@ public class NewsTitle implements Parcelable {
             item.time = source.readString();
             item.content = source.readString();
             item.newsType = source.readInt();
+            item.hot = source.readInt();
             return item;
         }
 
@@ -115,6 +138,7 @@ public class NewsTitle implements Parcelable {
                 ", time='" + time + '\'' +
                 ", content='" + content + '\'' +
                 ", newsType=" + newsType +
+                ", hot=" + hot +
                 '}';
     }
 
@@ -130,11 +154,21 @@ public class NewsTitle implements Parcelable {
                 item.setId(jo.getInt("id"));
                 item.setNewsType(jo.getInt("type"));
                 item.setLink(jo.getString("link"));
-                item.setTime(jo.getString("time"));
+                if(jo.has("time")) {
+                    item.setTime(jo.getString("time"));
+                }
+                if(jo.has("thumbnail")){
+                    String imgStr = jo.getString("thumbnail");
+                    String path = ImageUtils.saveNewsPicture(imgStr);
+                    item.setThumbnail(path);
+                }
                 item.setTitle(jo.getString("title"));
+                item.setHot(jo.getInt("hot"));
                 list.add(item);
             }
         }catch (JSONException e){
+            e.printStackTrace();
+        }catch(IOException e){
             e.printStackTrace();
         }
         return list;

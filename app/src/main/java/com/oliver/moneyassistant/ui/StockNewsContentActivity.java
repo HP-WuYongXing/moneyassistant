@@ -2,10 +2,12 @@ package com.oliver.moneyassistant.ui;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -72,7 +74,8 @@ public class StockNewsContentActivity extends ActionBarActivity {
         setContentView(R.layout.stock_news_content_activity);
         ButterKnife.inject(this);
         this.mNewsItem = this.getIntent().getParcelableExtra(ConstantsForStock.STOCK_NEWS_ITEM);
-
+        ActionBar actionBar = this.getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         getNewsContent();
     }
 
@@ -102,7 +105,7 @@ public class StockNewsContentActivity extends ActionBarActivity {
             if(parList!=null&&parList.size()!=0){
                 for(Paragraph p:parList){
                     if(i==p.getOrderNumber()){
-                        addTextView(p.getContent());
+                        addTextView(addBlanks()+p.getContent());
                     }
                 }
             }
@@ -116,6 +119,10 @@ public class StockNewsContentActivity extends ActionBarActivity {
         }
     }
 
+    private String addBlanks(){
+        return "  ";
+    }
+
     private void addTextView(String str){
         Log.i(TAG, "add text view: "+str);
         TextView textView = new TextView(this);
@@ -123,6 +130,10 @@ public class StockNewsContentActivity extends ActionBarActivity {
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         textView.setLayoutParams(lp);
         textView.setText(str);
+        textView.setTextColor(Color.BLACK);
+        textView.setPadding(10, 10, 10, 10);
+        textView.setTextSize(15);
+        textView.setLineSpacing(3f,1.1f);
         mLLNewsContent.addView(textView);
     }
 
@@ -132,6 +143,7 @@ public class StockNewsContentActivity extends ActionBarActivity {
         ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         imageView.setLayoutParams(lp);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         imageView.setScaleType(ImageView.ScaleType.CENTER);
         Bitmap bitmap = BitmapFactory.decodeFile(path);
         imageView.setImageBitmap(bitmap);
@@ -160,6 +172,8 @@ public class StockNewsContentActivity extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }else if(id==android.R.id.home){
+            this.finish();
         }
 
         return super.onOptionsItemSelected(item);

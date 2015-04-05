@@ -9,6 +9,7 @@ import android.util.Base64OutputStream;
 import android.util.Log;
 
 import com.oliver.moneyassistant.constants.ConstantsForFile;
+import com.oliver.moneyassistant.logic.http.ImageUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -197,24 +198,8 @@ public class NewsContent implements Parcelable{
     }
 
     private static String saveNewsPicture(String imgString)throws JSONException,IOException{
-        byte[] bytes = decodeImagStr(imgString);
-        if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
-            String pathDir= Environment.getExternalStorageDirectory()+ ConstantsForFile.TMP_FILE_DIRECTORY;
-            String picName =new Date().getTime()+".jpg";
-            File dirFile = new File(pathDir);
-            if(!dirFile.exists())dirFile.mkdirs();
-            File picFile = new File(pathDir,picName);
-            FileOutputStream fileOutputStream = new FileOutputStream(picFile);
-            fileOutputStream.write(bytes);
-            fileOutputStream.flush();
-            fileOutputStream.close();
-            return picFile.getPath();
-        }
-        return null;
-    }
-
-    private static byte[] decodeImagStr(String imgStr){
-       return Base64.decode(imgStr,Base64.DEFAULT);
+       String path =  ImageUtils.saveNewsPicture(imgString);
+        return path;
     }
 
     @Override

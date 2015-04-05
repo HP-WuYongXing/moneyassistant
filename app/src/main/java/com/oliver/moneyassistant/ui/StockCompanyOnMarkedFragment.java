@@ -68,8 +68,8 @@ public class StockCompanyOnMarkedFragment extends Fragment implements AdapterVie
             updateListData();
         }
         mNewsItemAdapter  = new SimpleAdapter(this.getActivity(),mNewsList,
-                R.layout.stock_news_dapan_view_cell,new String[]{"news_title","news_time"},
-                new int[]{R.id.tv_stock_news_title,R.id.tv_stock_news_time});
+                R.layout.stock_news_dapan_view_cell,new String[]{"news_title"},
+                new int[]{R.id.tv_stock_news_title});
         mCompanyNewsList = (ListView) mRootView.findViewById(R.id.lv_stock_news_company_on_market);
         mCompanyNewsList.setAdapter(mNewsItemAdapter);
         mCompanyNewsList.setOnItemClickListener(this);

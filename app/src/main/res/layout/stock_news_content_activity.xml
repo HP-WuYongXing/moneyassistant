@@ -1,7 +1,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
     <LinearLayout
         android:id="@+id/ll_news_content"
         android:layout_width="match_parent"
@@ -12,7 +13,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="标题"/>
+            android:text="标题"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="@dimen/outside_layout_margin"
+            android:layout_marginTop="@dimen/outside_layout_margin"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,13 +27,17 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="时间"/>
+                android:textSize="@dimen/intr_text_small_size"
+                android:text="时间"
+                android:gravity="center"/>
             <TextView
                 android:id="@+id/tv_news_source"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="来源"/>
+                android:text="来源"
+                android:textSize="@dimen/intr_text_small_size"
+                android:gravity="center"/>
          </LinearLayout>
         <LinearLayout
             android:id="@+id/ll_content_panel"
