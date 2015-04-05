@@ -22,6 +22,7 @@ public class ConstantsForStock {
     public static final String STOCK_NEWS_CONTENT_IMAGE="stock_news_content_image";
 
     public static final int STOCK_NEWS_KIND_FOCUS=1;
+    public static final int STOCK_NEWS_KIND_FOCUS_HEADER=101;
     public static final int STOCK_NEWS_KIND_GEGU=1005;
     public static final int STOCK_NEWS_KIND_COMPANY=1006;
 

@@ -61,7 +61,7 @@ public class StockNewsPagerAdapter extends FragmentPagerAdapter{
             case 0:
                 return resources.getString(R.string.focus);
             case 1:
-                return resources.getString(R.string.gegu);
+                return resources.getString(R.string.stocks);
             case 2:
                 return resources.getString(R.string.company_on_marked);
             default:

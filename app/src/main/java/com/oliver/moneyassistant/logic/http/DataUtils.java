@@ -63,7 +63,7 @@ public class DataUtils{
             return sb.toString();*/
         }
 
-    public static String readJsonString(String urlStr){
+    public static String sendHttpRequest(String urlStr){
         StringBuffer sb  = new StringBuffer();
         HttpURLConnection conn=null;
         try{
@@ -100,4 +100,5 @@ public class DataUtils{
         }
         return sb.toString();
     }
+
 }

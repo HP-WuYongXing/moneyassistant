@@ -11,6 +11,7 @@ import com.oliver.moneyassistant.constants.ConstantsForHttp;
 import com.oliver.moneyassistant.constants.ConstantsForStock;
 import com.oliver.moneyassistant.db.models.NewsTitle;
 import com.oliver.moneyassistant.logic.http.DataUtils;
+import com.oliver.moneyassistant.logic.http.RequestParameters;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,8 +46,12 @@ public class GetStockNewsFocusList implements Runnable{
     }
 
     private List<NewsTitle> getNewsItem (){
-       String url = ConstantsForHttp.FINANCE_CE_FOCUS_URL+"?newskind=focus&show=title&page="+this.mPage;
-        String json = DataUtils.readJsonString(url);
+        RequestParameters parameters = new RequestParameters(ConstantsForHttp.FINANCE_CE_FOCUS_URL);
+        parameters.addNewsKind(RequestParameters.NewsKind.FOCUS);
+        parameters.addShow(RequestParameters.Show.TITLE);
+        parameters.addPage(this.mPage);
+        String url = parameters.toString();
+        String json = DataUtils.sendHttpRequest(url);
         List<NewsTitle> titleList = NewsTitle.getNewsTitleFromJSON(json);
         return titleList;
     }

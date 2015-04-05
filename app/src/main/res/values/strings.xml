@@ -87,7 +87,7 @@
     <string name="currentDayOfMonthFont">roboto_light</string>
 
     <string name="focus">焦点</string>
-    <string name="gegu">个股</string>
+    <string name="stocks">股票</string>
     <string name="company_on_marked">上市公司</string>
     <string name="image_content">Image</string>
     <string name="title_activity_stock_news_content">MoneyAssistant</string>
