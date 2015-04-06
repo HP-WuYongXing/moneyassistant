@@ -9,12 +9,6 @@ import android.util.Log;
 
 import com.oliver.moneyassistant.constants.ConstantsForStock;
 import com.oliver.moneyassistant.db.models.NewsTitle;
-import com.oliver.moneyassistant.logic.http.CommonException;
-import com.oliver.moneyassistant.logic.http.DataUtils;
-
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,9 +33,9 @@ public class StockNewsGeguList implements Runnable{
         List<NewsTitle> list = getNewsItem();
         Bundle data = new Bundle();
         data.putParcelableArrayList(
-                ConstantsForStock.STOCK_GEGU_ITEM_LIST,(ArrayList<? extends Parcelable>)list);
+                ConstantsForStock.NEWS_ITEM_LIST,(ArrayList<? extends Parcelable>)list);
         Message msg = new Message();
-        msg.what = ConstantsForStock.STOCK_GEGU_ITEM_LIST_HANDLER;
+        msg.what = ConstantsForStock.NEWS_ITEM_LIST_HANDLER;
         msg.setData(data);
         mHandler.sendMessage(msg);
     }

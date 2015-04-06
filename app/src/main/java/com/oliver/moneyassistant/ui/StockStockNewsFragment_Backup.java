@@ -27,12 +27,12 @@ import java.util.Map;
 /**
  * Created by Oliver on 2015/3/27.
  */
-public class StockGeguNewsFragment extends Fragment
+public class StockStockNewsFragment_Backup extends Fragment
         implements AdapterView.OnItemClickListener{
 
-    private static final String TAG = "StockGeguNewsFragment";
+    private static final String TAG = "StockStockNewsFragment";
     private View mRootView;
-    protected ListView mGeguNewsList;
+    protected ListView mStockNewsList;
 
     protected SimpleAdapter mNewsItemAdapter;
     protected List<Map<String,String>> mNewsList;
@@ -52,10 +52,10 @@ public class StockGeguNewsFragment extends Fragment
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what){
-                case ConstantsForStock.STOCK_GEGU_ITEM_LIST_HANDLER:
+                case ConstantsForStock.NEWS_ITEM_LIST_HANDLER:
                     Bundle data = msg.getData();
                     mNewsItems =
-                            data.getParcelableArrayList(ConstantsForStock.STOCK_GEGU_ITEM_LIST);
+                            data.getParcelableArrayList(ConstantsForStock.NEWS_ITEM_LIST);
                     showNewsItems();
                     break;
             }
@@ -73,9 +73,9 @@ public class StockGeguNewsFragment extends Fragment
                 R.layout.stock_news_dapan_view_cell,new String[]{"news_title"},
                 new int[]{R.id.tv_stock_news_title});
 
-        mGeguNewsList = (ListView) mRootView.findViewById(R.id.lv_stock_news_gegu);
-        mGeguNewsList.setAdapter(mNewsItemAdapter);
-        mGeguNewsList.setOnItemClickListener(this);
+        mStockNewsList = (ListView) mRootView.findViewById(R.id.lv_stock_news_gegu);
+        mStockNewsList.setAdapter(mNewsItemAdapter);
+        mStockNewsList.setOnItemClickListener(this);
     }
 
     private void updateListData(){
@@ -113,7 +113,7 @@ public class StockGeguNewsFragment extends Fragment
                             View view, int position, long id){
         Intent intent = new Intent();
         intent.setClass(this.getActivity(),StockNewsContentActivity.class);
-        intent.putExtra(ConstantsForStock.STOCK_NEWS_ITEM,
+        intent.putExtra(ConstantsForStock.NEWS_ITEM,
                 mNewsItems.get(position));
         this.startActivity(intent);
     }

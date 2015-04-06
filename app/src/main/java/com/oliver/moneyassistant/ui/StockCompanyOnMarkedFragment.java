@@ -111,7 +111,7 @@ public class StockCompanyOnMarkedFragment extends Fragment implements AdapterVie
                             View view, int position, long id){
         Intent intent = new Intent();
         intent.setClass(this.getActivity(),StockNewsContentActivity.class);
-        intent.putExtra(ConstantsForStock.STOCK_NEWS_ITEM,mNewsItems.get(position));
+        intent.putExtra(ConstantsForStock.NEWS_ITEM,mNewsItems.get(position));
         this.startActivity(intent);
     }
 }

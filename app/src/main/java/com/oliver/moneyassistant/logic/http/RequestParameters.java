@@ -20,6 +20,7 @@ public class RequestParameters {
     public class NewsKind{
         public static final String FOCUS="focus";
         public static final String ADD_HOT="addhot";
+        public static final String STOCK="stock";
     }
     public class Show{
         public static final String TITLE="title";

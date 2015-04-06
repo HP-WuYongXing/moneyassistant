@@ -30,7 +30,7 @@ public class ExampleTest extends InstrumentationTestCase {
 
     public void testReadNewsContent(){
         StringBuilder sb = new StringBuilder();
-        sb.append(ConstantsForHttp.FINANCE_CE_FOCUS_URL);
+        sb.append(ConstantsForHttp.FINANCE_NEWS_URL);
         sb.append("?newskind=focus&show=content&titleid=2008");
         String js = DataUtils.sendHttpRequest(sb.toString());
         NewsContent content =  NewsContent.getNewsContentFromJSON(js);
@@ -46,7 +46,7 @@ public class ExampleTest extends InstrumentationTestCase {
     }
 
     public void testRequestParameter(){//newskind=focus&show=title&page=
-        RequestParameters parameters = new RequestParameters(ConstantsForHttp.FINANCE_CE_FOCUS_URL);
+        RequestParameters parameters = new RequestParameters(ConstantsForHttp.FINANCE_NEWS_URL);
         parameters.addNewsKind(RequestParameters.NewsKind.FOCUS);
         parameters.addShow(RequestParameters.Show.TITLE);
         parameters.addPage(1);

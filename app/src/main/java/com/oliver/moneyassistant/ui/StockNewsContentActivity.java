@@ -14,15 +14,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.ab.util.AbImageUtil;
 import com.oliver.moneyassistant.R;
 import com.oliver.moneyassistant.constants.ConstantsForStock;
 import com.oliver.moneyassistant.db.models.NewsContent;
@@ -31,8 +27,6 @@ import com.oliver.moneyassistant.db.models.NewsTitle;
 import com.oliver.moneyassistant.db.models.Paragraph;
 import com.oliver.moneyassistant.logic.http.ImageUtils;
 import com.oliver.moneyassistant.logic.runnables.GetStockNewsContent;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -73,7 +67,7 @@ public class StockNewsContentActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.stock_news_content_activity);
         ButterKnife.inject(this);
-        this.mNewsItem = this.getIntent().getParcelableExtra(ConstantsForStock.STOCK_NEWS_ITEM);
+        this.mNewsItem = this.getIntent().getParcelableExtra(ConstantsForStock.NEWS_ITEM);
         ActionBar actionBar = this.getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         getNewsContent();

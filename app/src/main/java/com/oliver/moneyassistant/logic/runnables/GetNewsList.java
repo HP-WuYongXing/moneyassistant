@@ -19,17 +19,19 @@ import java.util.List;
 /**
  * Created by Oliver on 2015/3/27.
  */
-public class GetStockNewsFocusList implements Runnable{
+public class GetNewsList implements Runnable{
 
-    public String TAG = "StockNewsDapanList";
+    public String TAG = "GetNewsList";
     private Context mContext;
     private Handler mHandler;
     private int mPage;
+    private String mNewsType;
 
-    public GetStockNewsFocusList(Context context, Handler handler,int page){
+    public GetNewsList(Context context, Handler handler, int page, String newsType){
         this.mContext = context;
         this.mHandler = handler;
         this.mPage = page;
+        this.mNewsType = newsType;
     }
 
     @Override
@@ -38,16 +40,17 @@ public class GetStockNewsFocusList implements Runnable{
         List<NewsTitle> list = getNewsItem();
         Bundle data = new Bundle();
         data.putParcelableArrayList(
-                ConstantsForStock.STOCK_FOCUS_ITEM_LIST,(ArrayList<? extends Parcelable>)list);
+                ConstantsForStock.NEWS_ITEM_LIST,
+                (ArrayList<? extends Parcelable>)list);
         Message msg = new Message();
-        msg.what = ConstantsForStock.STOCK_FOCUS_ITEM_LIST_HANDLER;
+        msg.what = ConstantsForStock.NEWS_ITEM_LIST_HANDLER;
         msg.setData(data);
         mHandler.sendMessage(msg);
     }
 
     private List<NewsTitle> getNewsItem (){
-        RequestParameters parameters = new RequestParameters(ConstantsForHttp.FINANCE_CE_FOCUS_URL);
-        parameters.addNewsKind(RequestParameters.NewsKind.FOCUS);
+        RequestParameters parameters = new RequestParameters(ConstantsForHttp.FINANCE_NEWS_URL);
+        parameters.addNewsKind(this.mNewsType);
         parameters.addShow(RequestParameters.Show.TITLE);
         parameters.addPage(this.mPage);
         String url = parameters.toString();

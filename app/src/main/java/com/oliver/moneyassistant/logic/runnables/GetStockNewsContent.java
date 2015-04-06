@@ -34,16 +34,19 @@ public class GetStockNewsContent implements Runnable{
     @Override
     public void run() {
         switch (mNewsItem.getNewsType()){
-            case ConstantsForStock.STOCK_NEWS_KIND_FOCUS:getFocusNews();break;
-            case ConstantsForStock.STOCK_NEWS_KIND_GEGU:getGeguNews();break;
+            case ConstantsForStock.STOCK_NEWS_KIND_FOCUS:
+                getNewsContent();break;
+            case ConstantsForStock.STOCK_NEWS_KIND_STOCK:
+                getNewsContent();break;
             case ConstantsForStock.STOCK_NEWS_KIND_COMPANY:getCompanyNews();break;
-            case ConstantsForStock.STOCK_NEWS_KIND_FOCUS_HEADER:getFocusNews();break;
+            case ConstantsForStock.STOCK_NEWS_KIND_FOCUS_HEADER:
+                getNewsContent();break;
         }
     }
 
-    private void getFocusNews(){
-        RequestParameters parameters = new RequestParameters(ConstantsForHttp.FINANCE_CE_FOCUS_URL);
-        parameters.addNewsKind(RequestParameters.NewsKind.FOCUS);
+    private void getNewsContent(){
+        RequestParameters parameters = new RequestParameters(ConstantsForHttp.FINANCE_NEWS_URL);
+        parameters.addNewsKind(getNewsStringType(this.mNewsItem.getNewsType()));
         parameters.addShow(RequestParameters.Show.CONTENT);
         parameters.addTitleId(this.mNewsItem.getId());
         String url = parameters.toString();
@@ -56,6 +59,16 @@ public class GetStockNewsContent implements Runnable{
         msg.what = ConstantsForStock.STOCK_NEWS_CONTENT_HANDLER;
         msg.setData(data);
         mHandler.sendMessage(msg);
+    }
+
+    private String getNewsStringType(int newsType){
+        switch (newsType){
+            case ConstantsForStock.STOCK_NEWS_KIND_FOCUS:
+                return RequestParameters.NewsKind.FOCUS;
+            case ConstantsForStock.STOCK_NEWS_KIND_STOCK:
+                return RequestParameters.NewsKind.STOCK;
+            default: return  RequestParameters.NewsKind.FOCUS;
+        }
     }
     private void getGeguNews(){
 

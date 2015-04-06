@@ -21,7 +21,7 @@ public class AddHotPointToTitle implements Runnable{
     @Override
     public void run() {
         int titleId = this.mTitle.getId();
-        RequestParameters parameters = new RequestParameters(ConstantsForHttp.FINANCE_CE_FOCUS_URL);
+        RequestParameters parameters = new RequestParameters(ConstantsForHttp.FINANCE_NEWS_URL);
         parameters.addNewsKind(RequestParameters.NewsKind.ADD_HOT);
         parameters.addTitleId(titleId);
         String url = parameters.toString();

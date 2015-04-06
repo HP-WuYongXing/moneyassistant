@@ -36,36 +36,25 @@ import java.util.List;
 /**
  * Created by Oliver on 2015/3/27.
  */
-public class StockFocusNewsFragment extends Fragment
+public class StockStockNewsFragment extends Fragment
         implements AdapterView.OnItemClickListener,SwipeRefreshLayout.OnRefreshListener{
-    private String TAG = "StockDapanNewsFragment";
-
+    private String TAG = "StockStockNewsFragment";
     private View mRootView;
-    protected ListView mLVFocuseNewsList;
+    protected ListView mLVStockNewsList;
     protected SwipeRefreshLayout mRefreshLayout;
-
     protected List<NewsTitle> mNewsList;
-
     protected List<NewsTitle> mReceivedNewsTitles;
-
     protected View mFooterViewNormal;
-
     protected LinearLayout mLLRefreshingFooter;
     protected TextView mTVClickRefresh;
-
     protected int mShowPage;
-
     private boolean mIsRefresh;
-
     private FocusNewsTitleListAdapter mAdapter;
-
     protected  View mListHeaderView;
     protected ViewPager mVPHeaderView;
     protected LinearLayout mLLPagerIndicator;
     protected List<View> mPagers;
     private ImageView[]mPagerTips;
-    private static final int PAGER_LENGTH=3;
-
     private List<NewsTitle> mHeaderNewsList;
     private TextView mTVHeaderNewsTitle;
 
@@ -172,7 +161,7 @@ public class StockFocusNewsFragment extends Fragment
         }
         mAdapter = new FocusNewsTitleListAdapter(mNewsList);
 
-        mLVFocuseNewsList = (ListView) mRootView.findViewById(R.id.lv_stock_news_dapan);
+        mLVStockNewsList = (ListView) mRootView.findViewById(R.id.lv_stock_news_dapan);
         mRefreshLayout = (SwipeRefreshLayout)mRootView.findViewById(R.id.srl_drop_down_refresh);
         mRefreshLayout.setOnRefreshListener(this);
         mRefreshLayout.setColorSchemeResources(
@@ -180,10 +169,10 @@ public class StockFocusNewsFragment extends Fragment
                 android.R.color.holo_orange_light, android.R.color.holo_red_light);
         hideListViewFooter();
 
-        mLVFocuseNewsList.addHeaderView(this.mListHeaderView);
-        mLVFocuseNewsList.addFooterView(this.mFooterViewNormal);
-        mLVFocuseNewsList.setAdapter(mAdapter);
-        mLVFocuseNewsList.setOnItemClickListener(this);
+        mLVStockNewsList.addHeaderView(this.mListHeaderView);
+        mLVStockNewsList.addFooterView(this.mFooterViewNormal);
+        mLVStockNewsList.setAdapter(mAdapter);
+        mLVStockNewsList.setOnItemClickListener(this);
         mIsRefresh = true;
         mShowPage=0;
     }
@@ -204,10 +193,10 @@ public class StockFocusNewsFragment extends Fragment
     }
 
     private void updateListData(){
-        new Thread(new GetNewsList(this.getActivity()
-                , listHandler,
+        new Thread(new GetNewsList(this.getActivity(),
+                listHandler,
                 this.mShowPage,
-                RequestParameters.NewsKind.FOCUS)).start();
+                RequestParameters.NewsKind.STOCK)).start();
     }
 
     private void showNewsItems() {
@@ -247,7 +236,10 @@ public class StockFocusNewsFragment extends Fragment
                 i--;
             }
         }
-        initViewPager();
+
+        if(mHeaderNewsList.size()!=0) {
+            initViewPager();
+        }
     }
 
     private void addHotPointToTitle(NewsTitle title){
@@ -313,10 +305,11 @@ public class StockFocusNewsFragment extends Fragment
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent();
-                    intent.setClass(StockFocusNewsFragment.this.getActivity(),
+                    intent.setClass(StockStockNewsFragment.this.getActivity(),
                             StockNewsContentActivity.class);
                     intent.putExtra(ConstantsForStock.NEWS_ITEM, mHeaderNewsList.get(pos));
-                    StockFocusNewsFragment.this.startActivity(intent);
+                    addHotPointToTitle(mNewsList.get(pos));
+                    StockStockNewsFragment.this.startActivity(intent);
                 }
             });
 

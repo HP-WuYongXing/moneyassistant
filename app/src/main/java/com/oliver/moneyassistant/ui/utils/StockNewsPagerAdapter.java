@@ -8,7 +8,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.oliver.moneyassistant.R;
 import com.oliver.moneyassistant.ui.StockCompanyOnMarkedFragment;
 import com.oliver.moneyassistant.ui.StockFocusNewsFragment;
-import com.oliver.moneyassistant.ui.StockGeguNewsFragment;
+import com.oliver.moneyassistant.ui.StockStockNewsFragment;
+import com.oliver.moneyassistant.ui.StockStockNewsFragment_Backup;
 
 /**
  * Created by Oliver on 2015/3/27.
@@ -40,7 +41,7 @@ public class StockNewsPagerAdapter extends FragmentPagerAdapter{
                 result = new StockFocusNewsFragment();
                 break;
             case 1:
-                result = new StockGeguNewsFragment();
+                result = new StockStockNewsFragment();
                 break;
             case 2:
                 result = new StockCompanyOnMarkedFragment();
